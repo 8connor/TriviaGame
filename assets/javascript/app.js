@@ -5,9 +5,8 @@ $(document).ready(function () {
 
     var formAnswers = $("#formAnswers");
 
-    var formInput = $("#input")
 
-    var input0 = "<input type='radio' class='answer' value='true' name='userSelect0'>";
+    var input0 = "<input type='radio' id='answer1' value='true' name='userSelect0'>";
 
     var input1 = "<input type='radio' class='answer' value='true' name='userSelect1'>";
 
@@ -15,14 +14,13 @@ $(document).ready(function () {
 
     var input3 = "<input type='radio' class='answer' value='true' name='userSelect3'>";
 
-    var incorrectInput0 = "<input type='radio' class='answer' value='false' name='userSelect0'>";
+    var incorrectInput0 = "<input type='radio' class='answer' value='false' name='userSelectWrong0'>";
 
-    var incorrectInput1 = "<input type='radio' class='answer' value='false' name='userSelect1'>";
+    var incorrectInput1 = "<input type='radio' class='answer' value='false' name='userSelectWrong1'>";
 
-    var incorrectInput2 = "<input type='radio' class='answer' value='false' name='userSelect2'>";
+    var incorrectInput2 = "<input type='radio' class='answer' value='false' name='userSelectWrong2'>";
 
-    var incorrectInput3 = "<input type='radio' class='answer' value='false' name='userSelect3'>";
-
+    var incorrectInput3 = "<input type='radio' class='answer' value='false' name='userSelect3Wrong'>";
 
     var timer;
 
@@ -74,15 +72,18 @@ $(document).ready(function () {
 
     ]
 
+    $("#subButton").hide();
+
     triviaGame.hide();
 
     startButton.on("click", function () {
         triviaGame.show();
         startButton.hide();
-        // if (!timerRunning) {
-        //     timer = setInterval(count, 1000)
-        //     timerRunning = true;
-        // };
+        $("#subButton").show();
+        if (!timerRunning) {
+            timer = setInterval(count, 1000)
+            timerRunning = true;
+        };
     });
 
 
@@ -111,24 +112,34 @@ $(document).ready(function () {
         formAnswers.append(incorrectInput3 + myQuestions[3].answers[1]);
         formAnswers.append(incorrectInput3 + myQuestions[3].answers[2]);
         formAnswers.append(incorrectInput3 + myQuestions[3].answers[3]);
-
-        triviaGame.append("<button type='button'> submit </button>");
     };
 
-    // function getInputValue() {
-    //     if(correctAnswer.value === true){
-    //         console.log("it works !");
-    //     }else{
-    //         console.log("123");
-    //     };
-    // };
+    $("#subButton").on("click", function(){
+        if($("input[name=userSelect0]:checked").val()){
+            $("body").append("<h1>question 1 : correct!</h1>")
+        }else{
+            $("body").append("<h1>question 1 : incorrect!</h1>")
+        }if($("input[name=userSelect1]:checked").val()){
+            $("body").append("<h1>question 2 : correct!</h1>")
+        }else{
+            $("body").append("<h1>question 2 : incorrect!</h1>")
+        }if($("input[name=userSelect2]:checked").val()){
+            $("body").append("<h1>question 3 : correct!</h1>")
+        }else{
+            $("body").append("<h1>question 3 : incorrect!</h1>")
+        }if($("input[name=userSelect3]:checked").val()){
+            $("body").append("<h1>question 4 : correct!</h1>")
+        }else{
+            $("body").append("<h1>question 4 : incorrect!</h1>")
+        };
+    });
 
-    // function endGame() {
-    //     clearInterval(intervalId);
-    //     timerRunning = false;
-    // }
-
-    startGame();
     
-    // getInputValue();
+
+    function endGame() {
+        clearInterval(intervalId);
+        timerRunning = false;
+    }
+    
+    startGame();
 });
