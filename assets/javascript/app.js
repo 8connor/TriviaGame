@@ -1,32 +1,29 @@
 $(document).ready(function () {
+    // IDS
     var startButton = $("#startButton");
-
     var triviaGame = $("#triviaGame");
-
     var formAnswers = $("#formAnswers");
-
-
+    var subButton = $("#subButton");
+    var body = $("body")
+    // =================================
+    // Answers
     var input0 = "<input type='radio' id='answer1' value='true' name='userSelect0'>";
-
     var input1 = "<input type='radio' class='answer' value='true' name='userSelect1'>";
-
     var input2 = "<input type='radio' class='answer' value='true' name='userSelect2'>";
-
     var input3 = "<input type='radio' class='answer' value='true' name='userSelect3'>";
-
     var incorrectInput0 = "<input type='radio' class='answer' value='false' name='userSelectWrong0'>";
-
     var incorrectInput1 = "<input type='radio' class='answer' value='false' name='userSelectWrong1'>";
-
     var incorrectInput2 = "<input type='radio' class='answer' value='false' name='userSelectWrong2'>";
-
     var incorrectInput3 = "<input type='radio' class='answer' value='false' name='userSelect3Wrong'>";
+    //=================================
+    //timer
 
-    var timer;
+    var watch;
+    
+    var time = 0;
 
     var timerRunning = false;
-
-    // example
+    //=================================
 
     var myQuestions = [
         {
@@ -37,7 +34,6 @@ $(document).ready(function () {
                 "Monsters, Inc.",
                 "Finding Nemo",
             ],
-            correctAnswer: 0,
         },
         {
             question: "<p>Which of these is NOT a name of one of the Spice Girls?</p>",
@@ -47,7 +43,6 @@ $(document).ready(function () {
                 "Victoria Beckham",
                 "Hayley Williams",
             ],
-            correctAnswer: 3,
         },
         {
             question: "<p>Which NBA team won the most titles in the 90s?</p>",
@@ -57,7 +52,6 @@ $(document).ready(function () {
                 "Lakers",
                 "Celtics",
             ],
-            correctAnswer: 1,
         },
         {
             question: "<p>Where was the first computer built?</p>",
@@ -67,26 +61,17 @@ $(document).ready(function () {
                 "Brown University",
                 "Yale University",
             ],
-            correctAnswer: 0,
         },
-
     ]
-
-    $("#subButton").hide();
-
+    //=================================
+    subButton.hide();
     triviaGame.hide();
 
     startButton.on("click", function () {
         triviaGame.show();
         startButton.hide();
-        $("#subButton").show();
-        if (!timerRunning) {
-            timer = setInterval(count, 1000)
-            timerRunning = true;
-        };
+        subButton.show();
     });
-
-
 
     function startGame() {
         formAnswers.append(myQuestions[0].question);
@@ -116,30 +101,23 @@ $(document).ready(function () {
 
     $("#subButton").on("click", function(){
         if($("input[name=userSelect0]:checked").val()){
-            $("body").append("<h1>question 1 : correct!</h1>")
+            body.append("<h1>question 1 : correct!</h1>")
         }else{
-            $("body").append("<h1>question 1 : incorrect!</h1>")
+            body.append("<h1>question 1 : incorrect!</h1>")
         }if($("input[name=userSelect1]:checked").val()){
-            $("body").append("<h1>question 2 : correct!</h1>")
+            body.append("<h1>question 2 : correct!</h1>")
         }else{
-            $("body").append("<h1>question 2 : incorrect!</h1>")
+            body.append("<h1>question 2 : incorrect!</h1>")
         }if($("input[name=userSelect2]:checked").val()){
-            $("body").append("<h1>question 3 : correct!</h1>")
+            body.append("<h1>question 3 : correct!</h1>")
         }else{
-            $("body").append("<h1>question 3 : incorrect!</h1>")
+            body.append("<h1>question 3 : incorrect!</h1>")
         }if($("input[name=userSelect3]:checked").val()){
-            $("body").append("<h1>question 4 : correct!</h1>")
+            body.append("<h1>question 4 : correct!</h1>")
         }else{
-            $("body").append("<h1>question 4 : incorrect!</h1>")
+            body.append("<h1>question 4 : incorrect!</h1>")
         };
     });
-
-    
-
-    function endGame() {
-        clearInterval(intervalId);
-        timerRunning = false;
-    }
     
     startGame();
 });
