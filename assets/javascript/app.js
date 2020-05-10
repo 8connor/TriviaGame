@@ -76,9 +76,15 @@ $(document).ready(function () {
     function startGame() {
         formAnswers.append(myQuestions[0].question);
         formAnswers.append(input0 + myQuestions[0].answers[0]);
-        formAnswers.append(incorrectInput0 + myQuestions[0].answers[1]);
-        formAnswers.append(incorrectInput0 + myQuestions[0].answers[2]);
-        formAnswers.append(incorrectInput0 + myQuestions[0].answers[3]);
+
+        for(var i = 1; i < myQuestions[0].answers.length; i++){
+            formAnswers.append(incorrectInput0 + myQuestions[0].answers[i]);
+        }
+        // for loop test. Had to start at once or I had the same answer twice.
+
+        // formAnswers.append(incorrectInput0 + myQuestions[0].answers[1]);
+        // formAnswers.append(incorrectInput0 + myQuestions[0].answers[2]);
+        // formAnswers.append(incorrectInput0 + myQuestions[0].answers[3]);
 
         formAnswers.append(myQuestions[1].question);
         formAnswers.append(incorrectInput1 + myQuestions[1].answers[0]);
