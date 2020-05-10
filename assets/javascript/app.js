@@ -17,17 +17,16 @@ $(document).ready(function () {
     var incorrectInput3 = "<input type='radio' class='answer' value='false' name='userSelect3Wrong'>";
     //=================================
     //timer
-
     var watch;
     
     var time = 0;
 
     var timerRunning = false;
     //=================================
-
+    //Object holding the quiz questions.
     var myQuestions = [
         {
-            question: "<p>What was the first full length CGI movie?</p>",
+            question: "<p>1: What was the first full length CGI movie?</p>",
             answers: [
                 "Toy Story",
                 "Cars",
@@ -36,7 +35,7 @@ $(document).ready(function () {
             ],
         },
         {
-            question: "<p>Which of these is NOT a name of one of the Spice Girls?</p>",
+            question: "<p>2: Which of these is NOT a name of one of the Spice Girls?</p>",
             answers: [
                 "Emma Bunton",
                 "Geri Halliwell",
@@ -45,7 +44,7 @@ $(document).ready(function () {
             ],
         },
         {
-            question: "<p>Which NBA team won the most titles in the 90s?</p>",
+            question: "<p>3: Which NBA team won the most titles in the 90s?</p>",
             answers: [
                 "Bulls",
                 "Spurs",
@@ -54,7 +53,7 @@ $(document).ready(function () {
             ],
         },
         {
-            question: "<p>Where was the first computer built?</p>",
+            question: "<p>4: Where was the first computer built?</p>",
             answers: [
                 "University of Pennsylvania",
                 "Princeton University",
